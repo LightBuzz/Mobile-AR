@@ -55,7 +55,7 @@ public class TouchToRotate : MonoBehaviour
 
         Ray ray = Camera.main.ScreenPointToRay(touch.position);
 
-        Debug.DrawRay(ray.origin, ray.direction * 100f, Color.yellow, 2f);
+        //Debug.DrawRay(ray.origin, ray.direction * 100f, Color.yellow, 2f);
 
         RaycastHit raycastHit;
         if (Physics.Raycast(ray, out raycastHit))

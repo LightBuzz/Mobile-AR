@@ -8,3 +8,4 @@ Showcasing ARFoundation, ARCore and ARKit
 
 ## Scenes ##
 * TapToPlace - Shows how to place objects on planes tracked from AR.
+* FurniturePlacement - Allows to place furniture in a room, position and rotate them.

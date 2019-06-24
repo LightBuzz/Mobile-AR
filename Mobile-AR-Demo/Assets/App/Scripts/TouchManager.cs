@@ -12,6 +12,8 @@ public class TouchManager : MonoBehaviour
 {
     private ARRaycastManager raycastManager;
 
+    private bool isInputActive = true;
+
     #region EVENTS
     public RaycastHitEvent onPlaneHitEvent;
     ///<summary>Event that is called every frame updating the placement preview.</summary>
@@ -28,6 +30,11 @@ public class TouchManager : MonoBehaviour
     {
         UpdateCameraPose();
         CheckInput();
+    }
+
+    public void ChangeIsActiveInput(bool newIsActive)
+    {
+        isInputActive = newIsActive;
     }
 
     /// <summary>
@@ -63,36 +70,42 @@ public class TouchManager : MonoBehaviour
     /// </summary>
     private void CheckInput()
     {
-        // Debug in editor
-        if (Application.isEditor)
+        if (isInputActive)
         {
-            if (Input.anyKeyDown)
+            // Debug in editor
+            if (Application.isEditor)
             {
-                Transform hitObject = FindObjectTouched(Camera.main.ScreenPointToRay(Input.mousePosition));
-                if (hitObject)
+                if (Input.anyKeyDown)
                 {
-                    // move object
-                    Debug.Log("Object hit " + hitObject.name);
-                }
-                else
-                {
-                    Debug.Log("No hit");
+                    Transform hitObject = FindObjectTouched(Camera.main.ScreenPointToRay(Input.mousePosition));
+                    if (hitObject)
+                    {
+                        // move object
+                        Debug.Log("Object hit " + hitObject.name);
+                    }
+                    else
+                    {
+                        Debug.Log("No hit");
+                    }
                 }
             }
-        }
 
-        if(Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            if (touch.phase ==  TouchPhase.Began)
+            if (Input.touchCount > 0)
             {
-                Transform hitObject = FindObjectTouched(Camera.main.ScreenPointToRay(touch.position));
+                Touch touch = Input.GetTouch(0);
 
-                if(hitObject)
-                    onObjectSelectedEvent?.Invoke(hitObject);
-                else
-                    CheckIfPlaneWasHit(touch);
+                if ((touch.position.y / Screen.height) < 0.2f) // If touch was at the very bottom of the screeen ignore it.
+                    return;
+
+                if (touch.phase == TouchPhase.Began)
+                {
+                    Transform hitObject = FindObjectTouched(Camera.main.ScreenPointToRay(touch.position));
+
+                    if (hitObject)
+                        onObjectSelectedEvent?.Invoke(hitObject);
+                    else
+                        CheckIfPlaneWasHit(touch);
+                }
             }
         }
     }
@@ -115,18 +128,18 @@ public class TouchManager : MonoBehaviour
     private Transform FindObjectTouched(Ray ray)
     {
         LayerMask layerMask = LayerMask.GetMask("Furniture");
-        
+
         RaycastHit raycastHit;
         Debug.DrawLine(ray.origin, ray.direction * 100f, Color.red, 2f);
-        if(Physics.Raycast(ray, out raycastHit, 100f, layerMask))
+        if (Physics.Raycast(ray, out raycastHit, 100f, layerMask))
         {
-            if(raycastHit.collider != null)
+            if (raycastHit.collider != null)
                 return raycastHit.transform;
         }
 
         return null;
     }
-    
+
     [Serializable]
     public class RaycastHitEvent : UnityEvent<ARRaycastHit>
     {

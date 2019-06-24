@@ -12,11 +12,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AR Plane Wall Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 6487537545475149358, guid: 7ae138b5b0d11354f8011f94b44e8621,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e606fc5e276e82d44a707a7cf017f27f, type: 2}
     - target: {fileID: 1537833962714248385, guid: 7ae138b5b0d11354f8011f94b44e8621,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -72,5 +67,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6894106585234571840, guid: 7ae138b5b0d11354f8011f94b44e8621,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f2cf8c3fd975f7644826ac007cac36c7, type: 2}
+    - target: {fileID: 6487537545475149358, guid: 7ae138b5b0d11354f8011f94b44e8621,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e606fc5e276e82d44a707a7cf017f27f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ae138b5b0d11354f8011f94b44e8621, type: 3}

@@ -1,17 +1,39 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
 public class FurniturePlacement : MonoBehaviour
 {
-    [SerializeField] private GameObject prefabToPlace;
+    private GameObject prefabToPlace;
 
     private ARPlaneManager planeManager;
 
     private Furniture activeFurniture;
 
+    [SerializeField] private FurnitureThumbnailPairList list;
+
     private void Start()
     {
         planeManager = FindObjectOfType<ARPlaneManager>();
+
+        UpdateActiveFurniture(0);
+    }
+
+    public void OnSelectionChanged(int newIndex)
+    {
+        UpdateActiveFurniture(newIndex);
+    }
+
+    private void UpdateActiveFurniture(int index)
+    {
+        if(activeFurniture != null)
+        {
+            Destroy(activeFurniture.gameObject);
+
+            activeFurniture = null;
+        }
+
+        prefabToPlace = list.Pairs[index].Model;
 
         CreateNewActiveFurniture();
     }
@@ -19,6 +41,7 @@ public class FurniturePlacement : MonoBehaviour
     private void CreateNewActiveFurniture()
     {
         activeFurniture = Instantiate(prefabToPlace).GetComponent<Furniture>();
+        activeFurniture.name += Guid.NewGuid(); // unique name
     }
 
     public void EnableIndicator(bool show)
@@ -55,12 +78,11 @@ public class FurniturePlacement : MonoBehaviour
             {
                 activeFurniture.Place();
                 CreateNewActiveFurniture();
-                Debug.Log("Placed prefab");
             }
         }
         else
         {
-            Debug.Log("prefab doesn't fit to surface");
+            Debug.Log("Prefab doesn't fit to surface");
         }
     }
 

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83aaf0cbdd196f3459800a0b7afbda87, type: 3}
+  m_Name: FurnitureThumbnailPairList
+  m_EditorClassIdentifier: 
+  pairs:
+  - model: {fileID: 6231326514153437962, guid: 164a59624b2e78b4bb7609a407d4ffe4, type: 3}
+    thumbnail: {fileID: 21300000, guid: 54e5ce37530ca7e4caaf6ebdc0a50db6, type: 3}
+  - model: {fileID: 6374401501498334366, guid: fb62627d5bfec154ea64dcc4a4cd3a2e, type: 3}
+    thumbnail: {fileID: 21300000, guid: 104616060dbf90049b48af4f7cdac6ff, type: 3}
+  - model: {fileID: 6983169007686724693, guid: 113afdd9c09b22d46a5d99a8cf687dc1, type: 3}
+    thumbnail: {fileID: 21300000, guid: 9a671f25888f1224fae4e9f17661b1f9, type: 3}
+  - model: {fileID: 3792081366456810820, guid: d1131094cabad354a8a31ceb3beb6d88, type: 3}
+    thumbnail: {fileID: 21300000, guid: b006caddf3875ea418b5cea4444138df, type: 3}
+  - model: {fileID: 5842822640351565392, guid: 4e2a30921ce28b84db8d3a33781d25ce, type: 3}
+    thumbnail: {fileID: 21300000, guid: ddca0b22fe6182a459e63203a40ea2a6, type: 3}

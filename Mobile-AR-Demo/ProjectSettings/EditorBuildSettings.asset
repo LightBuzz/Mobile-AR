@@ -14,4 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/App/Scenes/FurniturePlacement.unity
     guid: c886d49c84e1cb043a5a8ac2c090d051
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 3f4ef59f67b204c4d8caeffedf202cf4,
+      type: 2}
